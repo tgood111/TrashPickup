@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Schedule";
+}
+
+@model TrashPickUp.Models.ScheduleViewModel
+
+<h2> Scheduling Assistant</h2>
+<div class="row">
+    <div class="col-md-8">
+        <section id="loginForm">
+            @using (Html.BeginForm("DefaultScheduleForm", "Home", FormMethod.Post))
+            {
+                <div class="form-group">
+                    @Html.DropDownList("DateChoice", new SelectList(Model.Days), new {@class = "form-control"})
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Submit" class="btn btn-default" />
+                    </div>
+                </div>
+            }
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

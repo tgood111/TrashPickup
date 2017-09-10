@@ -220,6 +220,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ScheduleViewModel.cs" />
     <Compile Include="Models\NavBarViewModel.cs" />
     <Compile Include="Models\DefaultTrashSchedule.cs" />
     <Compile Include="Models\ExceptionDay.cs" />
@@ -290,6 +291,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Navbar.cshtml" />
+    <Content Include="Views\Home\Schedule.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
