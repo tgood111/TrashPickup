@@ -3,11 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TrashPickUp.Models;
 
 namespace TrashPickUp.Controllers
 {
     public class HomeController : Controller
     {
+        public ActionResult Navbar()
+        {
+            var model = new NavBarViewModel()
+            {
+                Administrator = User.IsInRole("Admin"),
+                User = User.IsInRole("User")
+            };
+            return PartialView(model);
+        }
+
         public ActionResult Index()
         {
             return View();

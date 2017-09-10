@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using System;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using Owin;
@@ -14,6 +15,8 @@ namespace TrashPickUp
             ConfigureAuth(app);
             CreateRolesandUsers();
         }
+
+
         //In this method we will create default User roles and Admin user for login
         private void CreateRolesandUsers()
         {
