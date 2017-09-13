@@ -1,0 +1,40 @@
+﻿@model IEnumerable<TrashPickUp.Models.VacationPeriod>
+
+@{
+    ViewBag.Title = "Vacation Periods";
+}
+<style type='text/css'>
+    /*設定 數字靠右*/
+</style>
+<h2>List</h2>
+<h4>Vacation Periods</h4>
+<p>
+    @Html.ActionLink("Create New", "VacationPeriodCreate")
+</p>
+<table class="table">
+    <tr>
+        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "VacationPeriodEdit", new { id=item.Id })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndDate)
+        </td>
+
+    </tr>
+}
+
+</table>
