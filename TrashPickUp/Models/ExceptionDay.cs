@@ -6,7 +6,7 @@ using System.Web;
 
 namespace TrashPickUp.Models
 {
-    public class ExceptionDay
+    public partial class ExceptionDay
     {
         [Key]
         public Guid Id { get; set; }

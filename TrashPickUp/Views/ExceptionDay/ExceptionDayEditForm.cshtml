@@ -1,0 +1,20 @@
+﻿@model TrashPickUp.Models.ExceptionDay
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.User, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.User, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.User,"" , new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Exception, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Exception, "Date")
+                @Html.ValidationMessageFor(model => model.Exception,"" , new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
