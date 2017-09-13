@@ -11,9 +11,6 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li>@Html.ActionLink("About", "About", "Home")</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                
                 @*This allows us to have admin specific action.*@
                 @if (Model.Administrator)
                 {
@@ -22,6 +19,9 @@
                 @*This allows us to have admin specific action.*@
                 @if (Model.User)
                 {
+                    <li>@Html.ActionLink("Schedule", "Schedule", "Home")</li>
+                    <li>@Html.ActionLink("Exception Days", "ExceptionDayIndex", "ExceptionDay")</li>
+                    <li>@Html.ActionLink("Vacation Period", "VacationPeriodIndex", "VacationPeriod")</li>
                 }
             </ul>
             @Html.Partial("_LoginPartial")

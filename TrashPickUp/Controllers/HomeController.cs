@@ -19,7 +19,7 @@ namespace TrashPickUp.Controllers
             model.Exceptions = dbContext.ExceptionDays.Where(x => x.User.ToString() == guid).ToList();
             model.VacationPeriods = dbContext.VacationPeriods.Where(x => x.User.ToString() == guid).ToList();
             model.DefaultDay = dbContext.DefaultTrashSchedules.FirstOrDefault(x => x.User.ToString() == guid);
-            return View(model);
+            return View(model); 
         }
 
         [HttpPost]
