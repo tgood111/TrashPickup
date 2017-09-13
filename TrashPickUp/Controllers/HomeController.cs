@@ -23,7 +23,7 @@ namespace TrashPickUp.Controllers
         }
 
         [HttpPost]
-        public void DefaultScheduleForm(string DateChoice)
+        public ActionResult DefaultScheduleForm(string DateChoice)
         {
             var guid = User.Identity.GetUserId();
             int value = 0;
@@ -72,6 +72,7 @@ namespace TrashPickUp.Controllers
                 }
                 db.SaveChanges();
             }
+            return RedirectToAction("Index");
         }
 
         public ActionResult Navbar()

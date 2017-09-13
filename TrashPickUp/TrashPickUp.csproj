@@ -197,8 +197,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ApplicationUserController.cs" />
+    <Compile Include="Controllers\ExceptionDayController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\VacationPeriodController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -218,8 +221,22 @@
     <Compile Include="Migrations\201709101442334_VacationPeriods.Designer.cs">
       <DependentUpon>201709101442334_VacationPeriods.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709130024352_ColumnChanged.cs" />
+    <Compile Include="Migrations\201709130024352_ColumnChanged.Designer.cs">
+      <DependentUpon>201709130024352_ColumnChanged.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709130026070_ColumnChanged1.cs" />
+    <Compile Include="Migrations\201709130026070_ColumnChanged1.Designer.cs">
+      <DependentUpon>201709130026070_ColumnChanged1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709130028101_CityAndZip.cs" />
+    <Compile Include="Migrations\201709130028101_CityAndZip.Designer.cs">
+      <DependentUpon>201709130028101_CityAndZip.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ApplicationUserMetadata.cs" />
+    <Compile Include="Models\ExceptionDayMetadata.cs" />
     <Compile Include="Models\ScheduleViewModel.cs" />
     <Compile Include="Models\NavBarViewModel.cs" />
     <Compile Include="Models\DefaultTrashSchedule.cs" />
@@ -227,10 +244,15 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\VacationPeriod.cs" />
+    <Compile Include="Models\VacationPeriodMetadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Database1.mdf" />
+    <Content Include="App_Data\Database1_log.ldf">
+      <DependentUpon>Database1.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -292,10 +314,20 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Navbar.cshtml" />
     <Content Include="Views\Home\Schedule.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Date.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Date.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
+    <Content Include="Views\ExceptionDay\ExceptionDayIndex.cshtml" />
+    <Content Include="Views\ExceptionDay\ExceptionDayCreate.cshtml" />
+    <Content Include="Views\ExceptionDay\ExceptionDayEdit.cshtml" />
+    <Content Include="Views\ExceptionDay\ExceptionDayEditForm.cshtml" />
+    <Content Include="Views\VacationPeriod\VacationPeriodIndex.cshtml" />
+    <Content Include="Views\VacationPeriod\VacationPeriodCreate.cshtml" />
+    <Content Include="Views\VacationPeriod\VacationPeriodEdit.cshtml" />
+    <Content Include="Views\VacationPeriod\VacationPeriodEditForm.cshtml" />
+    <Content Include="Views\ApplicationUser\ApplicationUserIndex.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -316,6 +348,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709101442334_VacationPeriods.resx">
       <DependentUpon>201709101442334_VacationPeriods.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709130024352_ColumnChanged.resx">
+      <DependentUpon>201709130024352_ColumnChanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709130026070_ColumnChanged1.resx">
+      <DependentUpon>201709130026070_ColumnChanged1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709130028101_CityAndZip.resx">
+      <DependentUpon>201709130028101_CityAndZip.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
