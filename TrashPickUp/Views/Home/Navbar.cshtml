@@ -14,10 +14,11 @@
                 @*This allows us to have admin specific action.*@
                 @if (Model.Administrator)
                 {
+                    <li>@Html.ActionLink("Pickups", "ApplicationUserIndex", "ApplicationUser")</li>
                 }
 
                 @*This allows us to have admin specific action.*@
-                @if (Model.User)
+                @if (Model.User || Model.Administrator)
                 {
                     <li>@Html.ActionLink("Schedule", "Schedule", "Home")</li>
                     <li>@Html.ActionLink("Exception Days", "ExceptionDayIndex", "ExceptionDay")</li>

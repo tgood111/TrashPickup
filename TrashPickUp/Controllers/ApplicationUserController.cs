@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using TrashPickUp.Models;
 
 namespace TrashPickUp.Controllers
@@ -21,7 +22,51 @@ namespace TrashPickUp.Controllers
             // Can't have exception day overriding this day
             // Can't be on vacation
             // Must be in a certain zip code.
-            return View(db.ApplicationUsers.ToList());
+            var context = new ApplicationDbContext();
+            var guid = User.Identity.GetUserId();
+            var trashPerson = context.Users.FirstOrDefault(x => x.Id.ToString() == guid);
+            if (trashPerson == null)
+                return View();
+
+            List<ApplicationUser> relevantPickups = new List<ApplicationUser>();
+            foreach (var user in context.Users.ToList())
+            {
+                var todaysDate = DateTime.Today;
+                
+                System.Globalization.CultureInfo ci =
+                    System.Threading.Thread.CurrentThread.CurrentCulture;
+                DayOfWeek fdow = ci.DateTimeFormat.FirstDayOfWeek;
+                DayOfWeek today = DateTime.Now.DayOfWeek;
+                DateTime startOfWeek = DateTime.Now.AddDays(-(today - fdow)).Date;
+                DateTime lastDayOfWeek = startOfWeek.AddDays(6);
+
+                if (context.VacationPeriods.FirstOrDefault(x => x.User.ToString() == user.Id.ToString() &&
+                                                       todaysDate <= x.EndDate && todaysDate >= x.StartDate) != null)
+                {
+                    continue;
+                } else if (context.ExceptionDays.FirstOrDefault(x => x.User.ToString() == user.Id.ToString() &&
+                                                     x.Exception != todaysDate && startOfWeek <= x.Exception &&
+                                                     lastDayOfWeek >= x.Exception) != null)
+                {
+                    continue;
+                }
+                else if (context.ExceptionDays.FirstOrDefault(x => x.User.ToString() == user.Id.ToString() &&
+                                                                   x.Exception == todaysDate) != null)
+                {
+                    if (user.Zip == trashPerson.Zip)
+                        relevantPickups.Add(user);
+                    continue;
+                }
+                else if (context.DefaultTrashSchedules.FirstOrDefault(
+                             x => x.User.ToString() == user.Id.ToString() && x.Day == todaysDate.DayOfWeek) == null)
+                {
+                    continue;
+                }
+
+                if (user.Zip == trashPerson.Zip) 
+                    relevantPickups.Add(user);
+            }
+            return View(relevantPickups);
         }
 
         /*

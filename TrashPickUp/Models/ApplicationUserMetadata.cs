@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace TrashPickUp.Models
 {
@@ -8,17 +9,8 @@ namespace TrashPickUp.Models
     {
     }
 
-    public partial class ApplicationUserMetadata
+    public class ApplicationUserMetadata
     {
-        [Display(Name = "Claims")]
-        public IdentityUserClaim Claims { get; set; }
-
-        [Display(Name = "Logins")]
-        public IdentityUserLogin Logins { get; set; }
-
-        [Display(Name = "Roles")]
-        public IdentityUserRole Roles { get; set; }
-
         [Required(ErrorMessage = "Please enter : Id")]
         [Display(Name = "Id")]
         public string Id { get; set; }

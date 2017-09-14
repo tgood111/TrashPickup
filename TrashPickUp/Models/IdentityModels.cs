@@ -47,6 +47,5 @@ namespace TrashPickUp.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<TrashPickUp.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }
